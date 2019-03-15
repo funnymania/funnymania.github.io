@@ -1,9 +1,12 @@
 <html>
-  <head>
-  </head>
-  <body>
-  </body>
-  <script>
+
+<head>
+</head>
+
+<body>
+</body>
+
+<script>
 let dialog = function (x, y, str) {
   this.pos = {
     x: x,
@@ -48,14 +51,13 @@ script.forEach((line) => {
   poem.push(dial);
 })
 
-function showWord(grid) {
-  // TODO Destroy previous node
+function showWord() {
 
   // Create HTML node under body
   const wordDiv = document.createElement('div');
 
   // Assign content to poem[count].value
-  const wordText = document.createTextNode(poem[count].value);
+  const wordText = document.createTextNode(poem[count].value.toUpperCase());
   wordDiv.appendChild(wordText);
 
   // Assign space on grid to poem[count].x & y
@@ -63,6 +65,20 @@ function showWord(grid) {
   wordDiv.style.gridColumnEnd = 'span 1';
   wordDiv.style.gridRowStart = poem[count].pos.x;
   wordDiv.style.gridRowEnd = 'span 1';
+  wordDiv.style.fontSize = '8vh';
+  wordDiv.style.fontWeight = '600';
+  wordDiv.style.textAlign = 'center';
+
+  // Destroy previous node
+  let cells = Array.from(grid.childNodes);
+
+  let removeMe = cells.find((cell) => {
+    return cell.style.gridColumnStart == poem[count].pos.y
+      &&  cell.style.gridRowStart == poem[count].pos.x;
+  });
+
+  if (removeMe) removeMe.remove();
+
   grid.appendChild(wordDiv);
 
   // increment counter
@@ -83,13 +99,19 @@ htmlBody.appendChild(grid);
 
 setInterval(showWord, 1000, grid, poem);
 </script>
-  <style>
+
+<style>
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 33vh 33vh 33vh;
+}
+
+.cell-small-text {
+  font-size: 8vh;
 }
 </style>
+
 </html>
 
 
