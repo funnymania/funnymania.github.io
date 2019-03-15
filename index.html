@@ -67,6 +67,9 @@ function showWord(grid) {
 
   // increment counter
   count++;
+  
+  // make sure it repeats forever ... 
+  count = count >= poem.length() ? 0 : count;
 }
 
 // play the film
