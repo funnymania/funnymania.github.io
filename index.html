@@ -76,6 +76,7 @@ let grid = document.createElement('div');
 let gridClass = document.createAttribute('class');
 gridClass.value = 'grid';
 grid.setAttributeNode(gridClass);
+htmlBody.appendChild(grid);
 
 setInterval(showWord(grid), 1000);
 </script>
