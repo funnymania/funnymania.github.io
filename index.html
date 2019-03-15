@@ -69,7 +69,7 @@ function showWord(grid) {
   count++;
   
   // make sure it repeats forever ... 
-  count = count >= poem.length() ? 0 : count;
+  count = count >= poem.length ? 0 : count;
 }
 
 // play the film
@@ -81,7 +81,7 @@ gridClass.value = 'grid';
 grid.setAttributeNode(gridClass);
 htmlBody.appendChild(grid);
 
-setInterval(showWord(grid), 1000);
+setInterval(showWord, 1000);
 </script>
   <style>
 .grid {
