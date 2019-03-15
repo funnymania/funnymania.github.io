@@ -1,1 +1,93 @@
-Don't drop the raw-doll!
+<html>
+  <head>
+  </head>
+  <body>
+    hel lo from the rode of who tells <br>
+    lies limits tied<br>
+    lifelike ties have in only signs<br>
+    taking temperate line<br>
+  </body>
+</html>
+<script>
+let dialog = function (x, y, str) {
+  this.pos = {
+    x: x,
+    y: y,
+  };
+  this.value = str;
+}
+
+// poem composition
+let script = [
+  '1 1 hel',
+  '1 3 lo',
+  '3 1 from',
+  '1 3 the',
+  '2 3 rode',
+  '1 2 of',
+  '2 2 who',
+  '1 1 tells',
+  '3 2 lies',
+  '1 1 limits',
+  '2 3 tied',
+  '1 1 lifelike',
+  '2 2 ties',
+  '1 1 have',
+  '2 2 in',
+  '3 2 only',
+  '3 3 signs',
+  '1 2 taking',
+  '1 1 temperate',
+  '3 2 line',
+  '2 3 eye.ball',
+  '3 2 bi-co',
+  '2 1 soda',
+]
+
+let poem = []
+script.forEach((line) => {
+  // split on space
+  let splitLine = line.split(' ');
+
+  let dial = new dialog(splitLine[0], splitLine[1], splitLine[2]);
+  poem.unshift(dial);
+})
+
+function showWord(grid) {
+  // TODO Destroy previous node
+
+  // Create HTML node under body
+  const wordDiv = document.createElement('div');
+
+  // Assign content to poem[count].value
+  const wordText = document.createTextNode(poem[count].value);
+  wordDiv.appendChild(wordText);
+
+  // Assign space on grid to poem[count].x & y
+  wordDiv.style.gridColumnStart = poem[count].pos.y;
+  wordDiv.style.gridColumnEnd = 'span 1';
+  wordDiv.style.gridRowStart = poem[count].pos.x;
+  wordDiv.style.gridRowEnd = 'span 1';
+  grid.appendChild(wordDiv);
+
+  // increment counter
+  count++;
+}
+
+// play the film
+let count = 0;
+let htmlBody = document.getElementById('body');
+let grid = document.createElement('div');
+let gridClass = document.createAttribute('class');
+gridClass.value = 'grid';
+grid.setAttributeNode(gridClass);
+
+setInterval(showWord(grid), 1000);
+</script>
+<style>
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+</style>
