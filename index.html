@@ -45,7 +45,7 @@ script.forEach((line) => {
   let splitLine = line.split(' ');
 
   let dial = new dialog(splitLine[0], splitLine[1], splitLine[2]);
-  poem.unshift(dial);
+  poem.push(dial);
 })
 
 function showWord(grid) {
